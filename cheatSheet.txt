@@ -1,0 +1,19 @@
+npx create-react-app react-task-tracker
+cd react-task-tracker
+npm start
+
+
+//vite
+
+npm create vite@latest
+cd 'folder'
+npm i
+
+npm run dev
+
+//icons
+
+npm i react-icon
+
+//build
+npm run build
