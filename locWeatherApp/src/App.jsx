@@ -13,50 +13,57 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [errorWeather, setErrorWeather] = useState(null);
   const [isLoadedWeather, setIsLoadedWeather] = useState(false);
+
   //console.log(weatherData);
 
   useEffect(() => {
     getLocation()
       .then((res) => {
-        console.log('got loc res1');
+        console.log('got loc response');
         setIsLoadedLocation(true);
         setLocation(res);
-        console.log(location);
+        //console.log(location, res);
       })
       .catch((e) => {
         setErrorLocation(e.message);
         console.log(e.message);
       });
-    getWeatherData()
-      .then((res) => {
-        console.log('got weather res1');
-        setIsLoadedWeather(true);
-        setWeatherData(res);
-        console.log(weatherData);
-      })
-      .catch((e) => {
-        setErrorWeather(e.message);
-        console.log(e.message);
-      });
   }, []);
+
+  useEffect(() => {
+    if (!isLoadedLocation) {
+      console.log('Loading location...');
+    } else {
+      console.log('geting getting weatherData');
+      getWeatherData()
+        .then((res) => {
+          console.log('got weather response');
+          setIsLoadedWeather(true);
+          setWeatherData(res);
+        })
+        .catch((e) => {
+          setErrorWeather(e.message);
+          console.log(e.message);
+        });
+    }
+  }, [location]);
 
   const getLocation = async () => {
     const response = await fetch(
       'http://ip-api.com/json/?fields=status,country,region,regionName,city,zip,lat,lon,timezone,query'
     );
-    console.log('got Loc res');
     const result = await response.json();
     return result;
   };
 
   const getWeatherData = async () => {
-    const location = await getLocation();
-    console.log('locationTest', location.lat, location.lat);
-    console.log('getWeather call ', `${location.lat}`);
+    //const location = await getLocation();
     const response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max&current_weather=true&timezone=auto`
     );
     const result = await response.json();
+    // console.log('locationTest', location.lat, location.lat);
+    // console.log('getWeather call ', `${location.lat}`);
     return result;
   };
 
