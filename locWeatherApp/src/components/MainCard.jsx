@@ -1,7 +1,5 @@
 import CurrentData from './CurrentData';
 import CurrentWeatherImg from './CurrentWeatherImg';
-import weatherCode from '../JSScripts/weatherCode';
-//import getWeatherData from '../JSScripts/getWeatherData';
 import { FaCloudRain } from 'react-icons/fa';
 
 const MainCard = ({
@@ -11,7 +9,6 @@ const MainCard = ({
   time,
   temperature,
   tempUnit,
-  imgWeathCode,
   weathercodeCurrent,
   minTemp,
   maxTemp,

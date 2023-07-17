@@ -3,7 +3,6 @@ const getUserDayTime = () => {
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
-  const hourMinutes = date.getHours() + ':' + date.getMinutes();
 
   const daysDaysOfWeek = {
     0: 'Sunday',
@@ -14,14 +13,6 @@ const getUserDayTime = () => {
     5: 'Friday',
     6: 'Saturday',
   };
-
-  // const nextDays = daysDaysOfWeek.map((day) => {
-  //   nextDay++;
-  //   if (nextDay > 6) {
-  //     nextDay = 0;
-  //   }
-  //   return daysOfWeek[nextDay];
-  // });
 
   const userDayTime = {
     currentDay: daysDaysOfWeek[day],
