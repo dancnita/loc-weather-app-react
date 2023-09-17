@@ -1,4 +1,4 @@
-const locationAPIurl =
+const locationAPIurl = //'https://ipapi.co/json/';
   'http://ip-api.com/json/?fields=status,country,region,regionName,city,zip,lat,lon,timezone,query';
 
 const weatherDataAPIurl = (userLatitude, userLongitude) => {

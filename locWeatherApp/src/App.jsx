@@ -37,6 +37,8 @@ function App() {
         setLocation(res);
       })
       .catch((e) => {
+        console.log(e);
+
         setErrorLocation(e.message);
         console.log(e.message);
       });
