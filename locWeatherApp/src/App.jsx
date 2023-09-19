@@ -29,12 +29,13 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [errorWeather, setErrorWeather] = useState(null);
   const [isLoadedWeather, setIsLoadedWeather] = useState(false);
-
+  console.log(location);
   useEffect(() => {
     getLocWeatherData(locationAPIurl)
       .then((res) => {
         setIsLoadedLocation(true);
         setLocation(res);
+        //console.log(res);
       })
       .catch((e) => {
         console.log(e);
@@ -48,7 +49,9 @@ function App() {
     if (!isLoadedLocation) {
       console.log('Loading location...');
     } else {
-      getLocWeatherData(weatherDataAPIurl(location.lat, location.lon))
+      getLocWeatherData(
+        weatherDataAPIurl(location.latitude, location.longitude)
+      )
         .then((res) => {
           setIsLoadedWeather(true);
           setWeatherData(res);
