@@ -64,8 +64,9 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header isLoadedLocation={isLoadedLocation} />
       <MainCard
+        isLoadedWeather={isLoadedWeather}
         location={locationFormat(location)}
         date={dateFormat(weatherData)}
         day={currentDayFormat(userDayTime)}
@@ -80,7 +81,10 @@ function App() {
         currWeatherImg={currWeatherImgFormat(weatherCode, weatherData)}
       />
       <div className='week-weather-container'>
-        <SmallCards weatherData={weatherData} />
+        <SmallCards
+          weatherData={weatherData}
+          isLoadedWeather={isLoadedWeather}
+        />
       </div>
     </>
   );

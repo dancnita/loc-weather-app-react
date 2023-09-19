@@ -34,6 +34,9 @@ main {
   flex: 1;
   background-color: #0fbaf938;
 }
+.clip-loader {
+  align-self: center;
+}
 
 .loc-time-container {
   display: flex;

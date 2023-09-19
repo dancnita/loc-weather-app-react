@@ -8,7 +8,7 @@ import {
   smallCardsDays,
 } from '../JSScripts/utils';
 
-const SmallCards = ({ weatherData }) => {
+const SmallCards = ({ weatherData, isLoadedWeather }) => {
   const userDayTime = getUserDayTime();
   const cardDays = smallCardsDays(userDayTime.daysDaysOfWeek, userDayTime.day);
 
@@ -21,6 +21,7 @@ const SmallCards = ({ weatherData }) => {
           imgWeathCode={imgWeathCodeFormat(weatherCode, weatherData, index)}
           maxTemp={maxTempFromatSC(weatherData, index)}
           minTemp={minTempFromatSC(weatherData, index)}
+          isLoadedWeather={isLoadedWeather}
         />
       ))}
     </>
