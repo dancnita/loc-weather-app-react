@@ -29,13 +29,12 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [errorWeather, setErrorWeather] = useState(null);
   const [isLoadedWeather, setIsLoadedWeather] = useState(false);
-  console.log(location);
+
   useEffect(() => {
     getLocWeatherData(locationAPIurl)
       .then((res) => {
         setIsLoadedLocation(true);
         setLocation(res);
-        //console.log(res);
       })
       .catch((e) => {
         console.log(e);
